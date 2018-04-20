@@ -13,6 +13,8 @@ class HappyniessViewController: UIViewController, FaceViewDataSource {
     @IBOutlet var faceView: FaceView!{
         didSet{
             faceView.dataSource = self
+            let handler = #selector(FaceView.pinchScale(pinchRecognizer:))
+            faceView.addGestureRecognizer(UIPinchGestureRecognizer(target:faceView, action:handler))
         }
     }
     
@@ -28,7 +30,7 @@ class HappyniessViewController: UIViewController, FaceViewDataSource {
         }
     }
  
-    func updateUI(){
+    @objc  func updateUI(){
         faceView.setNeedsDisplay()
     }
 }

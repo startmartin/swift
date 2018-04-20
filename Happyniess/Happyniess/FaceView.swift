@@ -38,7 +38,21 @@ class FaceView: UIView {
     var faceRadius:CGFloat{
         return min(bounds.size.width,bounds.size.height)/2*scale
     }
-    
+    //getsture, change scale
+    @objc func pinchScale( pinchRecognizer:UIPinchGestureRecognizer){
+        if pinchRecognizer.state == .changed{
+            scale *= pinchRecognizer.scale
+            pinchRecognizer.scale = 1
+        }
+    }
+//    func scale(gesture:UIPinchGestureRecognizer){
+//        print("sclae function in scale")
+//        print(gesture)
+//        //        if gesture.state == .changed{
+//        //            scale *= gesture.scale
+//        //            gesture.scale = 1
+//        //        }
+//    }
     weak var dataSource: FaceViewDataSource?
     
     //for eye and mouth const
